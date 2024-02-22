@@ -1,5 +1,6 @@
 package com.example.lightsout;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,14 +67,19 @@ public class MainActivity extends AppCompatActivity {
         for (int buttonIndex = 0; buttonIndex < mLightGrid.getChildCount(); buttonIndex++) {
             Button gridButton = (Button) mLightGrid.getChildAt(buttonIndex);
 
+
             // Find the button's row and col
             int row = buttonIndex / LightsOutGame.GRID_SIZE;
             int col = buttonIndex % LightsOutGame.GRID_SIZE;
 
             if (mGame.isLightOn(row, col)) {
                 gridButton.setBackgroundColor(mLightOnColor);
+                gridButton.setTextColor(Color.RED);
+                gridButton.setText(R.string.lights_on);
             } else {
                 gridButton.setBackgroundColor(mLightOffColor);
+                gridButton.setTextColor(Color.WHITE);
+                gridButton.setText(R.string.lights_off);
             }
         }
     }
